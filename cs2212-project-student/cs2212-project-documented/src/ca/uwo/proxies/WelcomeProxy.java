@@ -26,8 +26,8 @@ public class WelcomeProxy extends Proxy {
 	 */
 	@Override
 	public void placeOrder(Map<String, Integer> orderDetails, Buyer buyer) {
-		Facade facade = new Facade();
-		facade.placeOrder(orderDetails, buyer);
+            LowQuantityProxy next = new LowQuantityProxy();
+            next.placeOrder(orderDetails, buyer);
 	}
 
 	/* (non-Javadoc)
@@ -35,8 +35,8 @@ public class WelcomeProxy extends Proxy {
 	 */
 	@Override
 	public void restock(Map<String, Integer> restockDetails, Supplier supplier) {
-		Facade facade = new Facade();
-		facade.restock(restockDetails, supplier);
+		SupplierProxy next = new SupplierProxy();
+                next.restock(restockDetails, supplier);
 	}
 
 }
