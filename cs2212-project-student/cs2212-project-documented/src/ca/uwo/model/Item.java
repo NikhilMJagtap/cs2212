@@ -73,6 +73,13 @@ public class Item {
 		return availableQuantity;
 	}
 
+        /**
+         * @param state sets state of the item
+         */
+        public void setState(ItemState state){
+            this.state = state;
+        }
+          
 	/**
 	 * @param availableQuantity
 	 *            available quantity of the item in stock.
@@ -98,17 +105,20 @@ public class Item {
 	public ItemResult deplete(int quantity) {
 		// Deplete the item with quantity and return the execution result of
 		// deplete action.
-		ItemResult itemResult;
-		int availableQuantity = this.getAvailableQuantity();
-		if (availableQuantity < quantity) {
-			itemResult = new ItemResult("OUT OF STOCK", ResponseCode.Not_Completed);
-		} else {
-			availableQuantity -= quantity;
-			itemResult = new ItemResult("AVAILABLE", ResponseCode.Completed);
-		}
-
-		this.setAvailableQuantity(availableQuantity);
-		return itemResult;
+                // calling deplete method of the current state of the item                
+                return this.state.deplete(this, quantity);
+                
+//		ItemResult itemResult;
+//		int availableQuantity = this.getAvailableQuantity();
+//		if (availableQuantity < quantity) {
+//			itemResult = new ItemResult("OUT OF STOCK", ResponseCode.Not_Completed);
+//		} else {
+//			availableQuantity -= quantity;
+//			itemResult = new ItemResult("AVAILABLE", ResponseCode.Completed);
+//		}
+//
+//		this.setAvailableQuantity(availableQuantity);
+//		return itemResult;
 	}
 
 	/**
@@ -121,11 +131,14 @@ public class Item {
 	public ItemResult replenish(int quantity) {
 		// Replenish the item with quantity and return the execution result of
 		// replenish action.
-		int availableQuantity = this.getAvailableQuantity();
-		availableQuantity += quantity;
-		this.setAvailableQuantity(availableQuantity);
-		ItemResult itemResult = new ItemResult("RESTOCKED", ResponseCode.Completed);
-		return itemResult;
+                
+                return this.state.replenish(this, quantity);
+                
+//		int availableQuantity = this.getAvailableQuantity();
+//		availableQuantity += quantity;
+//		this.setAvailableQuantity(availableQuantity);
+//		ItemResult itemResult = new ItemResult("RESTOCKED", ResponseCode.Completed);
+//		return itemResult;
 	}
 
 }
