@@ -10,5 +10,10 @@ package ca.uwo.pricingStrategies.individual;
  * @author Nikhil Jagtap
  */
 public class IndividualPricingStrategyFactory {
+//    TODO: need to be implemented properly
+//    might be scheduled for Project 3
+    public static IndividualPricingStrategy create(String s){
+        return null;
+    }
     
 }

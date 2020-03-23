@@ -140,5 +140,36 @@ public class Item {
 //		ItemResult itemResult = new ItemResult("RESTOCKED", ResponseCode.Completed);
 //		return itemResult;
 	}
+        
+        // Observer pattern starts
+        
+        /**
+         * add observer to the viewers
+         * @param viewer the viewer to be added in viewers
+         * 
+         */
+        
+        public void addViewer(Viewer viewer){
+            this.viewers.add(viewer);
+        }
+        
+        /**
+         * remove observer from the viewers
+         * @param viewer the viewer to be removed from viewers
+         */
+        
+        public void removeViewer(Viewer viewer){
+            this.viewers.remove(viewer);
+        }
+        
+        /**
+         * notifies viewers of the item
+         */
+        
+        public void notifyViewers(){
+            for(int i=0; i<this.viewers.size(); ++i){
+                this.viewers.get(i).inform(this);
+            }
+        }
 
 }

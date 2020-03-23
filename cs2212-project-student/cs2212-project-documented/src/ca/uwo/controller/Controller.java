@@ -15,6 +15,7 @@ public class Controller {
 	
 	Order currentOrder = null;
 	
+        private static Controller instance = null;
 	/**
 	 * deplete the stock after placing the order.
 	 * @param myOrder details of the order.
@@ -54,4 +55,10 @@ public class Controller {
 		replenishStockOp = new ReplenishStockOperation();
 		createInvoiceOp = new CreateInvoiceOperation();
 	}
+        
+        public static Controller getInstance(){
+            if (instance == null)
+                instance = new Controller();
+            return instance;
+        }
 }

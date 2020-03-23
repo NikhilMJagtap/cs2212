@@ -36,6 +36,7 @@ public class LowStockState implements ItemState {
     @Override
     public ItemResult replenish(Item item, int quantity) {
         item.setAvailableQuantity(quantity + item.getAvailableQuantity());
+        item.notifyViewers();
         return new ItemResult("RESTOCKED", ResponseCode.Completed);
     }
     

@@ -20,7 +20,8 @@ public class LowQuantityProxy extends Proxy {
     public void placeOrder(Map<String, Integer> orderDetails, Buyer buyer) {
         if(orderDetails.size() > 10){
             System.out.println("Low Quantity Order. Processing...");
-            Facade facade = new Facade();
+//            Facade facade = new Facade();
+            Facade facade = Facade.getInstance();
             facade.placeOrder(orderDetails, buyer);
         } else{
             HighQuantityProxy proxy = new HighQuantityProxy();
