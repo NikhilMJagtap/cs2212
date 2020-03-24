@@ -7,7 +7,7 @@ package ca.uwo.pricingStrategies.individual;
 
 /**
  *
- * @author Nikhil Jagtap
+ * @author Danish Amrohi
  */
 public class IndividualPricingStrategyFactory {
 //    TODO: need to be implemented properly
