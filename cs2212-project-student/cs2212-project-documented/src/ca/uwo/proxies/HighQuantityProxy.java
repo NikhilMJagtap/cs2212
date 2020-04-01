@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  *
- * @author Nikhil Jagtap
+ * @author Danish Amrohi
  */
 public class HighQuantityProxy extends Proxy {
 
