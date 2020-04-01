@@ -16,6 +16,8 @@ import java.util.Map;
  */
 public class HighQuantityProxy extends Proxy {
 
+    private static HighQuantityProxy instance;
+    
     @Override
     public void placeOrder(Map<String, Integer> orderDetails, Buyer buyer) {
         System.out.println("High Quantity Order. Processing...");
@@ -27,6 +29,12 @@ public class HighQuantityProxy extends Proxy {
     @Override
     public void restock(Map<String, Integer> restockDetails, Supplier supplier) {
         //TODO:
+    }
+    
+    public static HighQuantityProxy getInstance(){
+        if(instance == null)
+            instance = new HighQuantityProxy();
+        return instance;
     }
     
 }

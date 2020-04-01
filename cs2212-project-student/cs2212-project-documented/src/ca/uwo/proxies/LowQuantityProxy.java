@@ -16,6 +16,8 @@ import java.util.Map;
  */
 public class LowQuantityProxy extends Proxy {
 
+    private static LowQuantityProxy instance;
+    
     @Override
     public void placeOrder(Map<String, Integer> orderDetails, Buyer buyer) {
         if(orderDetails.size() > 10){
@@ -24,7 +26,7 @@ public class LowQuantityProxy extends Proxy {
             Facade facade = Facade.getInstance();
             facade.placeOrder(orderDetails, buyer);
         } else{
-            HighQuantityProxy proxy = new HighQuantityProxy();
+            HighQuantityProxy proxy = HighQuantityProxy.getInstance();
             proxy.placeOrder(orderDetails, buyer);
         }
     }
@@ -32,6 +34,12 @@ public class LowQuantityProxy extends Proxy {
     @Override
     public void restock(Map<String, Integer> restockDetails, Supplier supplier) {
         //TODO:        
+    }
+    
+    public static LowQuantityProxy getInstance(){
+        if(instance == null)
+            instance = new LowQuantityProxy();
+        return instance;
     }
     
 }

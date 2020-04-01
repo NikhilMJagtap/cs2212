@@ -16,6 +16,7 @@ public class ItemRepository {
 	private Map<String, Item> savedItems;
 	private DataManager dataManager;
 
+        private static ItemRepository instance = null;
 	/**
 	 * update the quantity of item in the database for the deplete operation.
 	 * @param orderItem one entry in the order.
@@ -64,9 +65,18 @@ public class ItemRepository {
 	/**
 	 * constructor for ItemRepository class.
 	 */
-	public ItemRepository() {
+	private ItemRepository() {
 		super();
 		dataManager = DataManager.getInstance();
 		savedItems = new HashMap<>();
 	}
+        
+        /**
+         * getInstance of ItemRepository
+         */
+        public static ItemRepository getInstance(){
+            if(instance == null)
+                instance = ItemRepository.getInstance();
+            return instance;
+        }
 }

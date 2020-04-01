@@ -18,7 +18,7 @@ public class SupplierProxy extends Proxy {
 
     @Override
     public void placeOrder(Map<String, Integer> orderDetails, Buyer buyer) {
-        LowQuantityProxy proxy = new LowQuantityProxy();
+        LowQuantityProxy proxy = LowQuantityProxy.getInstance();
         proxy.placeOrder(orderDetails, buyer);
     }
 

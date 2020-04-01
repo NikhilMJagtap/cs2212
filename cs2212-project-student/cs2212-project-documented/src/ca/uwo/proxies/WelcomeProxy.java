@@ -18,7 +18,10 @@ public class WelcomeProxy extends Proxy {
 	/**
 	 * constructor for WelcomeProxy class.
 	 */
-	public WelcomeProxy() {
+    
+         private static WelcomeProxy instance;
+    
+	private WelcomeProxy() {
 	}
 
 	/* (non-Javadoc)
@@ -26,7 +29,7 @@ public class WelcomeProxy extends Proxy {
 	 */
 	@Override
 	public void placeOrder(Map<String, Integer> orderDetails, Buyer buyer) {
-            LowQuantityProxy next = new LowQuantityProxy();
+            LowQuantityProxy next = LowQuantityProxy.getInstance();
             next.placeOrder(orderDetails, buyer);
 	}
 
@@ -38,5 +41,11 @@ public class WelcomeProxy extends Proxy {
 		SupplierProxy next = new SupplierProxy();
                 next.restock(restockDetails, supplier);
 	}
+        
+        public static WelcomeProxy getInstance(){
+            if(instance == null)
+                instance = new WelcomeProxy();
+            return instance;
+        }
 
 }
