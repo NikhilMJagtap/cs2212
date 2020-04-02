@@ -13,7 +13,14 @@ public class IndividualPricingStrategyFactory {
 //    TODO: need to be implemented properly
 //    might be scheduled for Project 3
     public static IndividualPricingStrategy create(String s){
-        return null;
+        switch(s){
+            case "strategy1":
+                return new IndividualPricingStrategy1();
+            case "strategy2":
+                return new IndividualPricingStrategy2();
+            default:
+                return new IndividualPricingStrategy1();
+        }
     }
     
 }

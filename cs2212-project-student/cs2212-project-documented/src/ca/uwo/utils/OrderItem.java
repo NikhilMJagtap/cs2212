@@ -81,7 +81,7 @@ public class OrderItem {
 	 * @return itemPrice the price of the item.
 	 */
 	public double calculateItemPrice() {
-		double itemPrice = quantity * price;
+		double itemPrice = this.pricingStrategy.calculate(quantity, price);
 		return itemPrice;
 	}
 
